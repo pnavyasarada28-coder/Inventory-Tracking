@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inventory Dashboard</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+<div class="d-flex">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar text-white p-3">
+    <h4>📦 Inventory</h4>
+    <hr>
+    <p onclick="showSection('dashboard')">📊 Dashboard</p>
+    <p onclick="showSection('products')">📦 Products</p>
+    <p onclick="showSection('settings')">⚙️ Settings</p>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main-content flex-grow-1 p-4">
+
+    <!-- TOP BAR -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3>Dashboard</h3>
+      <button class="btn btn-primary" onclick="showSection('products')">+ Add Product</button>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboardSection">
+      <div class="row text-center mb-4">
+
+        <div class="col-md-4">
+          <div class="card shadow p-3">
+            <h6>Total Products</h6>
+            <h3 id="totalProducts">0</h3>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card shadow p-3">
+            <h6>Low Stock</h6>
+            <h3 id="lowStock">0</h3>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card shadow p-3">
+            <h6>Categories</h6>
+            <h3 id="totalCategories">0</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PRODUCTS -->
+    <div id="productsSection" style="display:none;">
+
+      <!-- FORM -->
+      <div class="card shadow p-4 mb-4">
+        <h5>Add / Edit Product</h5>
+
+        <input type="text" id="name" class="form-control mb-2" placeholder="Product Name">
+        <input type="number" id="quantity" class="form-control mb-2" placeholder="Quantity">
+        <input type="number" id="price" class="form-control mb-2" placeholder="Price">
+        <input type="text" id="category" class="form-control mb-2" placeholder="Category">
+
+        <button onclick="addProduct()" class="btn btn-success w-100">Save Product</button>
+      </div>
+
+      <!-- SEARCH + FILTER -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <input type="text" id="search" class="form-control" placeholder="Search..." onkeyup="searchProduct()">
+        </div>
+
+        <div class="col-md-6">
+          <select id="categoryFilter" class="form-control" onchange="filterByCategory()">
+            <option value="All">All Categories</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <table class="table table-hover custom-table shadow">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="settingsSection" style="display:none;">
+      <h4>Settings</h4>
+
+      <button class="btn btn-dark me-2" onclick="setDarkMode()">Dark Mode</button>
+      <button class="btn btn-light" onclick="setLightMode()">Light Mode</button>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="{% static 'script.js' %}"></script>
+
+</body>
+</html>
