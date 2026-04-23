@@ -7,6 +7,7 @@ A full-stack Inventory Management Dashboard built using Django, designed to mana
 Total products
 Low stock count
 Category insights
+
 📦 Product Management:
 Add, Edit, Delete products (CRUD operations)
 🔍 Search functionality
@@ -15,6 +16,7 @@ Add, Edit, Delete products (CRUD operations)
 🌙 Dark & ☀️ Light theme (with persistence using localStorage)
 🔐 Secure backend with CSRF protection
 🔄 Dynamic frontend using JavaScript fetch API
+
 🛠️ Tech Stack
 Frontend
 HTML
@@ -24,14 +26,7 @@ Backend
 Django
 Database
 SQLite
-🧠 Project Architecture
-Frontend (HTML/CSS/JS)
-        ↓
-Fetch API (AJAX)
-        ↓
-Django Views (REST-style APIs)
-        ↓
-SQLite Database
+
 ⚙️ Key Functionalities
 Built REST-style API endpoints using Django views
 Implemented full CRUD operations with database persistence
